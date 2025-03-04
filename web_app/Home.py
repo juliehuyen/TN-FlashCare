@@ -8,9 +8,7 @@ import streamlit as st
 st.title("FlashCare")
 
 # Introduction
-st.markdown("""
-Welcome to this application development course at Dauphine.
-The goal of this project is to enable each group to develop their own application using a series of modern and powerful technologies.
+st.markdown("""FlashCare est une application qui permet de gérer les différents processus liés à l'accueil des patients dans les services d'urgence jusqu'à leur prise en charge.
 
 ## Technologies Used
 For this project, you will work with the following technologies:
