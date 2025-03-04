@@ -5,7 +5,7 @@
 import streamlit as st
 
 # Page Title
-st.title("Welcome to the Application Development Project")
+st.title("FlashCare")
 
 # Introduction
 st.markdown("""
