@@ -80,25 +80,12 @@ Follow the steps below to set up your environment, run the provided scripts, and
 
 ### 1. Create a dotenv file
 
-At the root of the project, create a `.env` file that contains the following lines:
-
-```plaintext
-PYTHONPATH=.
-JSON_HISTORY_REPOSITORY={YOUR_CONVERSATION_PATH}
-```
+At the root of the project, copy `.env.template` and rename it as `.env`.
 
 ### 2. Obtain a Cohere API Key
 
 - Visit the [Cohere website](https://cohere.ai) and sign up for an API key.
-- Once obtained, store this API key in the `.env` file you created just before. 
-
-`.env` should now look like this:
-
-```plaintext
-PYTHONPATH=.
-COHERE_API_KEY=your_api_key_here
-JSON_HISTORY_REPOSITORY={YOUR_CONVERSATION_PATH}
-```
+- Once obtained, store this API key in your copy of the `.env` file.
 
 ### 3. Play with Cohere through a FastAPI server
 
