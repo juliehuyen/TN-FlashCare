@@ -1,50 +1,72 @@
-## This page is the home page of your front application
-
+# This page is the home page of your front application
 
 # Import Streamlit packages
 import streamlit as st
 
 # Page Title
-st.title("Welcome to the Application Development Project")
+st.title("🚑 FlashCare - Optimisation de la prise en charge aux urgences")
 
 # Introduction
 st.markdown("""
-Welcome to this application development course at Dauphine.
-The goal of this project is to enable each group to develop their own application using a series of modern and powerful technologies.
+Bienvenue dans le projet **FlashCare**, développé dans le cadre du cours de développement d'application à l'Université Paris Dauphine.
 
-## Technologies Used
-For this project, you will work with the following technologies:
+Ce projet vise à concevoir une **application innovante** pour améliorer la gestion des patients dans les services **d’urgence hospitalière**, en répondant à des problématiques concrètes rencontrées sur le terrain.
 
-1. **Streamlit**: To create interactive and user-friendly web interfaces. Streamlit simplifies the process of building custom web applications with Python.
+---
 
-2. **Cohere**: A natural language processing (NLP) model that offers powerful capabilities for text analysis, text generation, and other NLP tasks.
+## 🚀 Technologies Utilisées
 
-3. **FastAPI**: A modern and fast web framework for building APIs with Python. It is ideal for creating performant and scalable backend services.
+1. **Streamlit** : Pour construire une interface web simple, rapide et interactive.
+2. **Cohere** : Pour exploiter la puissance du NLP (traitement du langage naturel) afin de suggérer des diagnostics à partir de symptômes décrits.
+3. **FastAPI** : Pour créer un backend performant et évolutif, capable de traiter et d’exposer les données nécessaires à l’application.
 
-## Project Objectives
-Each group is expected to create a functional application using the technologies mentioned above. The application should address a specific need and be accessible via a web interface.
+---
 
-## Project Structure
-1. **Phase 1: Design** - Define the problem you want to solve with your application and design a solution using the mentioned technologies.
+## 🎯 Objectif du Projet
 
-2. **Phase 2: Development** - Develop the application using Streamlit for the interface, Cohere for NLP processing and FastAPI for the backend.
+Créer une application web qui :
+- **Réduit le stress des patients** en leur donnant des informations sur leur parcours aux urgences.
+- **Facilite le tri médical** grâce à une suggestion automatisée de diagnostics basée sur les symptômes.
+- **Améliore la coordination entre les personnels administratifs et médicaux**.
+- **Fluidifie le parcours de soin**, de l'arrivée à la sortie des urgences.
 
-3. **Phase 3: Deployment** - Deploy your application on a platform of your choice, ensuring it is accessible and functional.
+---
 
-## Resources and Support
-We will provide tutorials and documentation to help you familiarize yourself with these technologies. Technical support will also be available to answer your questions throughout the project.
+## 🧭 Déroulé du Projet
 
-## Evaluation Criteria
-Your application will be evaluated based on the following criteria
-- Relevance and originality of the proposed solution.
-- Effective or simulated integration of various technologies.
-- The quality of the user interface.
-- Robustness and design of the system architecture
+1. **Phase 1 : Analyse & Design**
+   - Étude des irritants des patients et personnels soignants.
+   - Définition des parcours utilisateurs et du processus métier.
 
-Good luck to everyone, and may the best project win!
+2. **Phase 2 : Développement**
+   - Interface avec **Streamlit**
+   - Backend en **FastAPI**
+   - Intégration NLP avec **Cohere**
 
+3. **Phase 3 : Déploiement**
+   - Mise en ligne sur une plateforme (ex : Streamlit Cloud, Render, Heroku…)
+   - Tests utilisateurs et ajustements
 
+---
 
-## Now, you can either delete this text (or save it in a new tab) and describe your problem instead
+## 🛠 Fonctionnalités Clés à venir
 
+- Simulation de tri d’urgence en fonction des symptômes
+- Interface patient avec suivi des étapes
+- Espace personnel administratif simplifié
+- Tableau de bord médical avec centralisation des données
+
+---
+
+## 📝 Évaluation du Projet
+
+Le projet sera évalué selon les critères suivants :
+- Pertinence de la solution proposée
+- Intégration des technologies demandées
+- Qualité de l’expérience utilisateur (UX/UI)
+- Robustesse de l’architecture logicielle
+
+Bonne chance à toutes les équipes ! 💪
+
+---
 """)

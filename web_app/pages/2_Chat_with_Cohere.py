@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 import os
 import streamlit as st
 import requests
+
 from rest.model.chat_request import ChatRequest
 
 # Charger les variables d'environnement
