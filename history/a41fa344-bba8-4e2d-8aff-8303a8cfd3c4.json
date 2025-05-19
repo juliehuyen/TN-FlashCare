@@ -1,0 +1,12 @@
+{
+    "messages": [
+        {
+            "role": "user",
+            "message": "Quelle est la date de Noël ?"
+        },
+        {
+            "role": "assistant",
+            "message": "La date de Noël est le 25 décembre. C'est une fête chrétienne qui commémore la naissance de Jésus de Nazareth."
+        }
+    ]
+}

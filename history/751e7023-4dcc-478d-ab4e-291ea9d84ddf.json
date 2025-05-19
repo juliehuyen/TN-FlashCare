@@ -1,0 +1,12 @@
+{
+    "messages": [
+        {
+            "role": "user",
+            "message": "Hello !"
+        },
+        {
+            "role": "assistant",
+            "message": "Hi! How's it going? I hope you're having a fantastic day! 😊"
+        }
+    ]
+}
