@@ -27,12 +27,14 @@ def create_generator_rest_adapter():
     infrastructure_adapter = InfrastructureAdapter(cohere_text_generator, json_history_repository)
     
     # Initialiser les services
-    # system_prompt_service = SystemPromptService()
-    text_generation_service = TextGenerationService(infrastructure_adapter)
+    system_prompt_service = SystemPromptService()  # Ajouté ici
+    text_generation_service = TextGenerationService(infrastructure_adapter, system_prompt_service)  # Ajouté ici
     chat_history_service = ChatHistoryService(infrastructure_adapter)
 
     # Configurer les services et adaptateurs
-    generator_controller_adapter = GeneratorControllerAdapter(text_generation_service, chat_history_service)
+    generator_controller_adapter = GeneratorControllerAdapter(
+        text_generation_service, chat_history_service, system_prompt_service  # Ajouté ici
+    )
     return GeneratorRestAdapter(generator_controller_adapter)
 
 

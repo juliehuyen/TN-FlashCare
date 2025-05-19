@@ -72,6 +72,8 @@ def handle_user_input(prompt):
 # Initialisation de la session
 if "conv_id" not in st.session_state:
     create_default_conversation()
+if "conv_id" not in st.session_state:
+    st.session_state["conv_id"] = None  # Sécurité si la création échoue
 
 # Titre et description de l'application
 st.title("💬 Chatbot")
@@ -99,8 +101,11 @@ st.markdown("""
 """)
 
 # Initialiser et afficher l'historique de la conversation
-history = get_conversation_history(st.session_state["conv_id"])
-st.session_state["messages"] = history if history else []
+if st.session_state["conv_id"]:
+    history = get_conversation_history(st.session_state["conv_id"])
+    st.session_state["messages"] = history if history else []
+else:
+    st.session_state["messages"] = []
 
 # Afficher les messages existants
 for msg in st.session_state["messages"]:

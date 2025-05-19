@@ -171,6 +171,9 @@ cython_debug/
 # PyPI configuration file
 .pypirc
 
+# History conversations
+history/
+
 
 .DS_Store
 Thumbs.db
