@@ -48,3 +48,17 @@ Good luck to everyone, and may the best project win!
 ## Now, you can either delete this text (or save it in a new tab) and describe your problem instead
 
 """)
+
+st.markdown("""
+    <style>
+    /* Texte dans la barre latérale */
+    .css-1d391kg {  /* Classe par défaut de la sidebar */
+        color: white !important;  /* Texte blanc */
+    }
+
+    /* Texte dans le reste de l'application */
+    .css-10trblm {  /* Classe par défaut pour le texte principal */
+        color: #1a1a3d !important;  /* Texte de la couleur de secondaryBackgroundColor */
+    }
+    </style>
+""", unsafe_allow_html=True)
