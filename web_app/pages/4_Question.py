@@ -94,21 +94,21 @@ div.stButton > button:hover {
 
 
 # === Title & Introduction ===
-st.title("🏥 Patient Intake Form")
+st.title("Patient Intake Form")
 st.markdown("""
 Please fill out this form while you're on your way to the hospital.  
 This will help the medical team prepare for your arrival and ensure faster, safer care.
 """)
 
 # === Personal Information ===
-st.header("🧍 Personal Information")
+st.header("Personal Information")
 first_name = st.text_input("First Name")
 last_name = st.text_input("Last Name")
 birth_date = st.date_input("Date of Birth")
 arrival_time = st.time_input("Estimated Arrival Time", value=datetime.now().time())
 
 # === Medical History ===
-st.header("🩺 Medical History")
+st.header("Medical History")
 medical_history = st.multiselect(
     "Select any known medical conditions:",
     [
@@ -124,15 +124,15 @@ medical_history = st.multiselect(
 other_conditions = st.text_area("Other relevant medical information")
 
 # === Current Symptoms ===
-st.header("🤒 Current Symptoms")
+st.header("Current Symptoms")
 symptoms = st.text_area("What symptoms are you experiencing?")
 
 # === Emergency Situation ===
-st.header("🚨 Emergency Details")
+st.header("Emergency Details")
 emergency = st.text_area("Briefly describe what brings you to the emergency room")
 
 # === File Upload ===
-st.header("📎 Attachments")
+st.header("Attachments")
 uploaded_files = st.file_uploader(
     "Upload any relevant images (prescription, ID card, injury, etc.)", 
     type=["png", "jpg", "jpeg"], 
@@ -140,7 +140,7 @@ uploaded_files = st.file_uploader(
 )
 
 # === Submit Button ===
-if st.button("📨 Submit Form"):
+if st.button("Submit Form"):
     if not first_name or not last_name:
         st.warning("Please enter your first and last name.")
     elif not symptoms or not emergency:
