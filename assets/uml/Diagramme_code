@@ -29,37 +29,39 @@ flowchart LR
   end
 
   A -->|REST / WS| G
-  G --> P
   G --> T
-  G --> Q
+  T --> Q
+  G --> P
   G --> H
-  G --> F
-  G --> C
-  G --> E
   G --> R
 
+  G --> F
+  G --> E
+  G --> C
+
   Q --> BDDQ
-  H -->|génération| LLM
   H --> DB
+  H -->|génération| LLM
+
   P --> DB
 
 
   T -->|lire dossier| P
   T --> LLM
+
   C -->|résumé| LLM
 
   E --> DB
   R --> DB
   R -->|explication| LLM
 
-  F --> DB
-  T --> Q
-  F --> C 
-  F --> E
   F --> R
-  C -->|audio| WH
+  F --> DB
+  F --> FS
+  F --> E
 
   C --> FS
-  F --> FS
+  F --> C 
+  C -->|audio| WH
 
   R --> V
