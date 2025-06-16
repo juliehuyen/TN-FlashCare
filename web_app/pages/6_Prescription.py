@@ -1,4 +1,11 @@
 import streamlit as st
+import requests
+from dotenv import load_dotenv
+import os
+
+# Load environment variables
+load_dotenv()
+BASE_API_URL = os.getenv("BASE_API_URL", "http://127.0.0.1:8000")
 
 st.set_page_config(page_title="Ordonnance & Chat IA", layout="centered")
 st.title("📋 Ordonnance")
@@ -64,24 +71,44 @@ for idx, pres in enumerate(st.session_state.prescriptions):
         st.markdown("---")
 
 # --- 2) Chat mock IA ---
-st.subheader("💬 Chat IA sur votre ordonnance")
+st.subheader("💬 Une question sur votre ordonnance ? Demandez à notre IA !")
+# Initialize conversation
+if "conv_id" not in st.session_state:
+    # Create new conversation
+    resp = requests.post(f"{BASE_API_URL}/conversation")
+    if resp.ok:
+        st.session_state.conv_id = resp.json().get("conversation_id")
+    else:
+        st.error("Impossible de créer une conversation.")
+        st.stop()
 
-# Initialisation de l'historique
-if "chat_history" not in st.session_state:
-    st.session_state.chat_history = []
+# Load history
+def fetch_history(conv_id):
+    r = requests.get(f"{BASE_API_URL}/conversation/{conv_id}")
+    return r.json().get("history", []) if r.ok else []
 
-# Affichage des messages
-for msg in st.session_state.chat_history:
+history = fetch_history(st.session_state.conv_id)
+if "messages" not in st.session_state:
+    st.session_state.messages = history
+
+# Display chat messages
+for msg in st.session_state.messages:
     st.chat_message(msg["role"]).write(msg["message"])
 
-# Saisie utilisateur
-if prompt := st.chat_input("Posez votre question…"):
-    # Ajout du message utilisateur
-    st.session_state.chat_history.append({"role": "user", "message": prompt})
+# User input
+if prompt := st.chat_input("Posez votre question sur l'ordonnance..."):
     st.chat_message("user").write(prompt)
-
-    # Réponse mock
-    bot_response = "ℹ️ Ceci est une réponse simulée de l'IA concernant votre ordonnance."
-    st.session_state.chat_history.append({"role": "assistant", "message": bot_response})
-    st.chat_message("assistant").write(bot_response)
-
+    st.session_state.messages.append({"role": "user", "message": prompt})
+    # Send to backend
+    r = requests.post(
+        f"{BASE_API_URL}/conversation/{st.session_state.conv_id}",
+        json={"prompt": prompt}
+    )
+    if r.ok:
+        history = r.json().get("history", [])
+        # Find latest assistant message
+        bot_msg = next((m["message"] for m in reversed(history) if m["role"] == "assistant"), "")
+    else:
+        bot_msg = "Désolé, je n'ai pas pu répondre."
+    st.chat_message("assistant").write(bot_msg)
+    st.session_state.messages.append({"role": "assistant", "message": bot_msg})
