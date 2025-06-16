@@ -21,6 +21,7 @@ flowchart LR
   subgraph Infrastructure
     DB[(Patient BDD)]
     FS[(File BDD)]
+    BDDQ[(Queue BDD)]
     LLM[(LLM Engine)]
     WH[(Whisper)]
     V[(Vidal)]
@@ -28,30 +29,37 @@ flowchart LR
   end
 
   A -->|REST / WS| G
-  G --> H
   G --> P
   G --> T
   G --> Q
+  G --> H
+  G --> F
   G --> C
   G --> E
   G --> R
-  G --> F
 
+  Q --> BDDQ
+  H -->|génération| LLM
+  H --> DB
   P --> DB
+
+
   T -->|lire dossier| P
   T --> LLM
-  C --> FS
-  C -->|audio| WH
   C -->|résumé| LLM
+
   E --> DB
   R --> DB
   R -->|explication| LLM
-  H --> DB
-  H -->|génération| LLM
+
   F --> DB
   T --> Q
+  F --> C 
   F --> E
   F --> R
-  F --> C 
+  C -->|audio| WH
+
+  C --> FS
   F --> FS
+
   R --> V
