@@ -1,0 +1,57 @@
+flowchart LR
+  subgraph Frontend
+    A[Web & Mobile Apps]
+  end
+
+  subgraph GatewayCluster
+    G[API Gateway]
+  end
+
+  subgraph CoreServices
+    P[PatientService]
+    T[TriageService]
+    Q[QueueService]
+    C[ConsultationService]
+    E[ExamResultsService]
+    R[PrescriptionService]
+    H[ChatService]
+    F[ReportGenerationService]
+  end
+
+  subgraph Infrastructure
+    DB[(Patient BDD)]
+    FS[(File BDD)]
+    LLM[(LLM Engine)]
+    WH[(Whisper)]
+    V[(Vidal)]
+
+  end
+
+  A -->|REST / WS| G
+  G --> H
+  G --> P
+  G --> T
+  G --> Q
+  G --> C
+  G --> E
+  G --> R
+  G --> F
+
+  P --> DB
+  T -->|lire dossier| P
+  T --> LLM
+  C --> FS
+  C -->|audio| WH
+  C -->|résumé| LLM
+  E --> DB
+  R --> DB
+  R -->|explication| LLM
+  H --> DB
+  H -->|génération| LLM
+  F --> DB
+  T --> Q
+  F --> E
+  F --> R
+  F --> C 
+  F --> FS
+  R --> V
