@@ -5,7 +5,7 @@ import os
 from multiprocessing import Process
 
 def run_uvicorn():
-    uvicorn.run("rest.api:rest_api", host="127.0.0.1", port=8000)
+    uvicorn.run("chat_service.rest.api:rest_api", host="127.0.0.1", port=8000)
 
 def run_streamlit():
     # Construct the absolute path to Home.py

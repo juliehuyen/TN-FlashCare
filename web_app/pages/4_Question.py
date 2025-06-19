@@ -1,5 +1,6 @@
 import streamlit as st
 from datetime import datetime
+from patient_service.app import save_form_data
 
 # === Page config ===
 st.set_page_config(page_title="Patient Intake Form", layout="centered")
@@ -147,6 +148,20 @@ if st.button("Submit Form"):
         st.warning("Please describe your symptoms and the emergency situation.")
     else:
         st.success("Form successfully submitted. Thank you for your cooperation!")
+
+        form_data = {
+            "first_name": first_name,
+            "last_name": last_name,
+            "birth_date": birth_date.strftime("%Y-%m-%d"),
+            "medical_history": medical_history,
+            "other_conditions": other_conditions,
+            "symptoms": symptoms,
+            "emergency": emergency,
+            "uploaded_files": [file.name for file in uploaded_files] if uploaded_files else []
+        }
+
+        save_form_data(form_data)
+
 
         # Recap
         st.markdown("### ✅ Summary")

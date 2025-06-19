@@ -7,7 +7,7 @@ __pycache__/
 *.so
 
 # History files
-/History
+chat_service/History
 
 # Distribution / packaging
 .Python
