@@ -1,6 +1,3 @@
-import sys
-from dotenv import load_dotenv
-import os
 import streamlit as st
 import requests
 
@@ -8,10 +5,9 @@ import requests
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
 from chat_service.rest.model.chat_request import ChatRequest
 
-# Charger les variables d'environnement
-load_dotenv()
-BASE_API_URL = "http://127.0.0.1:8000"
-sys.path.append(os.getenv('PYTHONPATH'))
+from env_config import EnvConfig
+
+BASE_API_URL = EnvConfig.get_api_url()
 
 # Fonction pour gérer les appels API
 def api_request(method, url, data=None):
@@ -23,7 +19,7 @@ def api_request(method, url, data=None):
         response.raise_for_status()
         return response.json()
     except requests.exceptions.RequestException as e:
-        st.error(f"Erreur lors de l'appel API : {e}")
+        st.error(f"Error during API call: {e}")
         return None
 
 # Fonction pour créer une nouvelle conversation
@@ -39,7 +35,7 @@ def create_default_conversation():
         st.session_state["conv_id"] = new_conv_id
         st.session_state["messages"] = [{"role": "assistant", "message": "How can I help you?"}]
     else:
-        st.error("Impossible de créer une nouvelle conversation par défaut.")
+        st.error("Unable to create a new default conversation.")
 
 # Fonction pour récupérer l'historique de la conversation
 def get_conversation_history(conv_id):
@@ -47,7 +43,7 @@ def get_conversation_history(conv_id):
     response = api_request("GET", url)
     if response and "history" in response:
         return response["history"]
-    st.error("La réponse de l'API n'est pas dans le format attendu.")
+    st.error("The API response is not in the expected format.")
     return []
 
 # Fonction pour gérer l'entrée utilisateur
