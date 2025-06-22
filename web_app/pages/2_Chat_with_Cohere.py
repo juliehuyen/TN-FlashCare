@@ -1,6 +1,9 @@
 import streamlit as st
 import requests
-from rest.model.chat_request import ChatRequest
+
+# Ajoute le dossier racine du projet au PYTHONPATH
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
+from chat_service.rest.model.chat_request import ChatRequest
 
 from env_config import EnvConfig
 
