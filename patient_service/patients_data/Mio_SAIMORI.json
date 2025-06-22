@@ -1,0 +1,13 @@
+{
+    "first_name": "Mio",
+    "last_name": "Saimori",
+    "birth_date": "2015-06-22",
+    "medical_history": [
+        "Allergies"
+    ],
+    "other_conditions": "Allergies au pollen",
+    "symptoms": "allergies saisonnières",
+    "emergency": "Nez qui coule, éternuements, gorge un peu irritée",
+    "uploaded_files": [],
+    "id": "mio_saimori"
+}

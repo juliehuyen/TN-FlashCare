@@ -48,6 +48,7 @@ def triage_patient(patient_id: str):
         raise HTTPException(resp.status_code, f"ChatService error: {resp.text}")
 
     body = resp.json()
+    print("ChatService response:", body)  # Ajoutez cette ligne pour debug
     try:
         return TriageResult(
             patient_id=patient_id,

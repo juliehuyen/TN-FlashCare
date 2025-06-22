@@ -1,0 +1,13 @@
+{
+    "first_name": "Holo",
+    "last_name": "Wise",
+    "birth_date": "2015-06-22",
+    "medical_history": [
+        "Asthma"
+    ],
+    "other_conditions": "Tabagisme",
+    "symptoms": "Douleur thoracique aiguë, essoufflement au moindre effort",
+    "emergency": "Insuffisance respiratoire par moments",
+    "uploaded_files": [],
+    "id": "holo_wise"
+}
