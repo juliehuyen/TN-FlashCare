@@ -1,7 +1,7 @@
 import streamlit as st
 import requests
 
-st.set_page_config(page_title="📝 File d’attente patients")
+st.set_page_config(page_title="📝 File d’attente patients", layout="centered")
 
 st.title("📝 File d'attente actuelle")
 
@@ -16,7 +16,12 @@ try:
         st.info("La file d'attente est vide.")
     else:
         for i, patient in enumerate(queue, start=1):
-            st.subheader(f"{i}. {patient['patient_id']}")
+            # Transform patient_id "prenom_nom" into "Prénom NOM"
+            raw_id = patient.get('patient_id', '')
+            parts = raw_id.split('_')
+            display_name = ' '.join([part.capitalize() for part in parts])
+
+            st.subheader(f"{i}. {display_name}")
             st.markdown(f"**Score:** {patient['triage_score']:.2f}")
             st.markdown(f"**Niveau:** {patient['triage_level'].capitalize()}")
             st.markdown(f"**Explication:** {patient['explanation']}")
