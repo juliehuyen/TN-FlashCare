@@ -3,7 +3,7 @@ from env_config import EnvConfig
 from chat_service.domain.port.impl.generator_controller_adapter import GeneratorControllerAdapter
 from chat_service.domain.service.text_generation_service import TextGenerationService
 from chat_service.domain.service.chat_history_service import ChatHistoryService
-from domain.service.system_prompt_service import SystemPromptService
+from chat_service.domain.service.system_prompt_service import SystemPromptService
 
 from chat_service.infrastructure.adapter.infrastructure_adapter import InfrastructureAdapter
 from chat_service.infrastructure.history.json_history_repository import JsonHistoryRepository

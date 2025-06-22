@@ -1,12 +1,12 @@
 from chat_service.domain.model.chat_history import ChatHistory
 from chat_service.domain.port.driven.text_generator_port import TextGeneratorPort
-from domain.service.system_prompt_service import SystemPromptService
-from domain.model.role_message import RoleMessage
+from chat_service.domain.service.system_prompt_service import SystemPromptService
+from chat_service.domain.model.role_message import RoleMessage
 
 class TextGenerationService:
     def __init__(self, text_generator: TextGeneratorPort, system_prompt_service: SystemPromptService):
         self.text_generator = text_generator
-        self.system_prompt_service = SystemPromptService()
+        self.system_prompt_service = system_prompt_service
 
     def get_generated_text(self, chat_history: ChatHistory) -> str:
         # 1) Retrieve the system prompt textAdd commentMore actions
