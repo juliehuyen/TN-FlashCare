@@ -1,6 +1,8 @@
+import sys
+from dotenv import load_dotenv
+import os
 import streamlit as st
 import requests
-
 # Ajoute le dossier racine du projet au PYTHONPATH
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
 from chat_service.rest.model.chat_request import ChatRequest
