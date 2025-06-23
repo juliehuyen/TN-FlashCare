@@ -9,9 +9,11 @@ class GeneratorControllerAdapter(GeneratorControllerPort):
     def __init__(
         self,
         text_generation_service: TextGenerationService = None,
-        chat_history_service: ChatHistoryService = None):
+        chat_history_service: ChatHistoryService = None,
+        system_prompt_service: str = None):
         self.text_generation_service = text_generation_service
         self.chat_history_service = chat_history_service
+        self.sytem_prompt_service = system_prompt_service
 
     def generate_message(self, prompt: str) -> str:
         role_msg = RoleMessage(role="user", message=prompt)
