@@ -2,7 +2,7 @@ import streamlit as st
 from streamlit.components.v1 import html
 
 st.set_page_config(page_title="Medical Test Tracker", layout="centered")
-st.title("🧪 Medical Test Tracker")
+st.title("Medical Test Tracker")
 st.markdown("""
 Welcome to your personal test dashboard.  
 Here you can follow the progress of your medical tests, see appointments, and access results.
